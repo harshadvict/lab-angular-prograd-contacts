@@ -1,27 +1,30 @@
-<div>
-  <label for="contact-name">Name:</label>
-  <input type="text" [(ngModel)]="newContact.name">
-</div>
-<div>
-  <label for="contact-email">Email:</label>
-  <input type="text" [(ngModel)]="newContact.email">
-</div>
-<div>
-  <label for="contact-phone">Phone:</label>
-  <input type="text" [(ngModel)]="newContact.phoneNumber">
-</div>
-<div>
-  <label for="contact-image">Image:</label>
-  <input type="text" [(ngModel)]="newContact.image">
-</div>
+<form #formval="ngForm" (ngSubmit)="formReset(formval)">
+  <div>
+    <label for="contact-name">Name:</label>
+    <input type="text" [(ngModel)]="newContact.name" name="name" />
+  </div>
+  <div>
+    <label for="contact-email">Email:</label>
+    <input type="text" [(ngModel)]="newContact.email" name="email"/>
+  </div>
+  <div>
+    <label for="contact-phone">Phone:</label>
+    <input type="text" [(ngModel)]="newContact.phoneNumber" name="phone" />
+  </div>
+  <div>
+    <label for="contact-image">Image:</label>
+    <input type="text" [(ngModel)]="newContact.image" name="image"/>
+  </div>
 
-<button (click)="addContact(newContact)">Submit New Contact</button>
-
+  <button type="submit" (click)="addContact(newContact)">
+    Submit New Contact
+  </button>
+</form>
 <ul class="contacts">
   <li *ngFor="let contact of contacts">
-    <h3>{{contact.name}}</h3>
-    <p>{{contact.email}}</p>
-    <p>{{contact.phoneNumber}}</p>
-    <img src="{{contact.image}}" alt="Imagen de {{contact.name}}">
+    <h3>{{ contact.name }}</h3>
+    <p>{{ contact.email }}</p>
+    <p>{{ contact.phoneNumber }}</p>
+    <img src="{{ contact.image }}" alt="Imagen de {{ contact.name }}" />
   </li>
 </ul>
